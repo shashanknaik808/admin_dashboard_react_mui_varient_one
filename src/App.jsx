@@ -1,9 +1,10 @@
 import './App.css';
+import Sidenav from './Sidenav';
 
 function App() {
   return (
     <div>
-      Hello World
+      <Sidenav />
     </div>
   );
 }
