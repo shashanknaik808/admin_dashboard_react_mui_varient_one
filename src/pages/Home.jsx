@@ -2,8 +2,6 @@ import React from 'react';
 import Sidenav from '../Sidenav';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
-
-
 export default function Home() {
     return (
         <>
@@ -40,7 +38,6 @@ export default function Home() {
                     </Typography>
                 </Box>
             </Box>
-
         </>
     )
 }
