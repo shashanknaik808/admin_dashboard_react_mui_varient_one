@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -12,8 +12,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import { useNavigate } from 'react-router-dom';
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -24,7 +23,6 @@ const openedMixin = (theme) => ({
     }),
     overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
     transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -36,7 +34,6 @@ const closedMixin = (theme) => ({
         width: `calc(${theme.spacing(8)} + 1px)`,
     },
 });
-
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -45,7 +42,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         width: drawerWidth,
@@ -66,6 +62,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function Sidenav() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
+    const navigate = useNavigate();
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -78,7 +75,7 @@ export default function Sidenav() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate("/") }}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
@@ -97,7 +94,7 @@ export default function Sidenav() {
                             <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate("/about") }}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
@@ -116,7 +113,7 @@ export default function Sidenav() {
                             <ListItemText primary="About" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
-                    <ListItem disablePadding sx={{ display: 'block' }}>
+                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate("/settings") }}>
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
