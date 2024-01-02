@@ -77,6 +77,26 @@ export default function Home() {
                                 </Stack>
                             </Grid>
                         </Grid>
+                        <Box height={20} />
+                        <Grid container spacing={2}>
+                            <Grid item xs={8}>
+                                <Card sx={{ height: 60 + "vh" }}>
+                                    <CardContent>
+
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Card sx={{ height: 60 + "vh" }}>
+                                    <CardContent>
+                                        <div className='paddingall'>
+                                            <span className='pricetitle'>Popular Products</span>
+                                        </div>
+                                        <AccordionDash />
+                                    </CardContent>
+                                </Card>
+                            </Grid>
+                        </Grid>
                     </Box>
                 </Box>
             </div>
