@@ -38,14 +38,20 @@ export default function AccordionDash() {
                     </Typography>
                 </AccordionDetails>
             </Accordion>
-            <Accordion disabled>
+            <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3a-content"
-                    id="panel3a-header"
+                    aria-controls="panel2a-content"
+                    id="panel2a-header"
                 >
-                    <Typography>Disabled Accordion</Typography>
+                    <Typography>Accordion 3</Typography>
                 </AccordionSummary>
+                <AccordionDetails>
+                    <Typography>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                        malesuada lacus ex, sit amet blandit leo lobortis eget.
+                    </Typography>
+                </AccordionDetails>
             </Accordion>
         </div>
     );
