@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidenav from '../components/Sidenav.jsx';
 import Navbar from '../components/Navbar.jsx';
+import AccordionDash from '../components/AccordionDash.jsx';
 import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import "../Dash.css";
@@ -89,6 +90,11 @@ export default function Home() {
                             <Grid item xs={4}>
                                 <Card sx={{ height: 60 + "vh" }}>
                                     <CardContent>
+                                        <div className='paddingall'>
+                                            <span className='pricetitle'>Popular Products</span>
+                                        </div>
+                                        Popular Products
+                                        <AccordionDash />
                                     </CardContent>
                                 </Card>
                             </Grid>
