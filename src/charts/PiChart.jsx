@@ -22,7 +22,7 @@ export default function PiChart() {
         <Chart
             chartType="PieChart"
             width="100%"
-            height="250px"
+            height="300px"
             data={data}
             options={options}
         />

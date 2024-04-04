@@ -28,7 +28,7 @@ export default function HbarChart() {
         <Chart
             chartType="BarChart"
             width="100%"
-            height="220px"
+            height="290px"
             data={data}
             options={options}
         />

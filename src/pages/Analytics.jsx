@@ -7,7 +7,6 @@ import '../Dash.css';
 import GeoChart from '../charts/GeoChart.jsx';
 import PiChart from '../charts/PiChart.jsx';
 import HbarChart from '../charts/HbarChart.jsx';
-
 export default function Analytics() {
     return (
         <>
@@ -23,7 +22,7 @@ export default function Analytics() {
                                     <Box sx={{ width: "50%" }}>
                                         <Card sx={{ height: 19 + "vh" }} className='gradient'>
                                             <CardContent>
-                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "4px 0px" }}>
+                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "7px 0px" }}>
                                                     Visitors
                                                 </Typography>
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#f0fcfc" }}>
@@ -36,7 +35,7 @@ export default function Analytics() {
                                         </Card>
                                         <Card sx={{ height: 19 + "vh", marginTop: "16px" }} className='gradient'>
                                             <CardContent>
-                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "4px 0px" }}>
+                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "7px 0px" }}>
                                                     Visitors
                                                 </Typography>
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#f0fcfc" }}>
@@ -51,7 +50,7 @@ export default function Analytics() {
                                     <Box sx={{ width: "50%", height: "50%" }}>
                                         <Card sx={{ height: 19 + "vh" }} className='gradientlight'>
                                             <CardContent>
-                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "4px 0px" }}>
+                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "7px 0px" }}>
                                                     Visitors
                                                 </Typography>
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#f0fcfc" }}>
@@ -64,7 +63,7 @@ export default function Analytics() {
                                         </Card>
                                         <Card sx={{ height: 19 + "vh", marginTop: "16px" }} className='gradientlight'>
                                             <CardContent>
-                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "4px 0px" }}>
+                                                <Typography gutterBottom variant="p" component="div" sx={{ color: "#f0fcfc", padding: "7px 0px" }}>
                                                     Visitors
                                                 </Typography>
                                                 <Typography gutterBottom variant="h5" component="div" sx={{ color: "#f0fcfc" }}>
