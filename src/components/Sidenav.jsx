@@ -12,11 +12,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import HomeIcon from '@mui/icons-material/Home';
+import GroupIcon from '@mui/icons-material/Group';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../appStore';
-
 const drawerWidth = 240;
-
 const openedMixin = (theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
@@ -25,7 +27,6 @@ const openedMixin = (theme) => ({
     }),
     overflowX: 'hidden',
 });
-
 const closedMixin = (theme) => ({
     transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -37,7 +38,6 @@ const closedMixin = (theme) => ({
         width: `calc(${theme.spacing(8)} + 1px)`,
     },
 });
-
 const DrawerHeader = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
@@ -46,7 +46,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         width: drawerWidth,
@@ -63,14 +62,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         }),
     }),
 );
-
 export default function Sidenav() {
     const theme = useTheme();
     // const [open, setOpen] = React.useState(true);
-    const navigate = useNavigate();
-    const updateOpen = useAppStore((state) => state.updateOpen);
+    // const updateOpen = useAppStore((state) => state.updateOpen);
     const open = useAppStore((state) => state.dopen);
-
+    const navigate = useNavigate();
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -98,6 +95,7 @@ export default function Sidenav() {
                                     justifyContent: 'center',
                                 }}
                             >
+                                <HomeIcon />
                             </ListItemIcon>
                             <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
@@ -117,8 +115,29 @@ export default function Sidenav() {
                                     justifyContent: 'center',
                                 }}
                             >
+                                <GroupIcon />
                             </ListItemIcon>
                             <ListItemText primary="About" sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate("/analytics") }}>
+                        <ListItemButton
+                            sx={{
+                                minHeight: 48,
+                                justifyContent: open ? 'initial' : 'center',
+                                px: 2.5,
+                            }}
+                        >
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <AnalyticsIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Analytics" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
                     </ListItem>
                     <ListItem disablePadding sx={{ display: 'block' }} onClick={() => { navigate("/settings") }}>
@@ -136,6 +155,7 @@ export default function Sidenav() {
                                     justifyContent: 'center',
                                 }}
                             >
+                                <SettingsIcon />
                             </ListItemIcon>
                             <ListItemText primary="Settings" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
