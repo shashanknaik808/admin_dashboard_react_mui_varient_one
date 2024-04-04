@@ -9,6 +9,7 @@ import BarChart from '../charts/BarChart.jsx';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import CountUp from 'react-countup';
 
 
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
                                                 <CreditCardIcon />
                                             </div>
                                             <Typography gutterBottom variant="h5" component="div" sx={{ color: "#ffffff" }}>
-                                                $500.00
+                                                $<CountUp delay={0.2} end={500} duration={0.3} />
                                             </Typography>
                                             <Typography gutterBottom variant="body" component="div" sx={{ color: "#ccd1d1" }}>
                                                 Total Earnings
@@ -42,7 +43,7 @@ export default function Home() {
                                                 <ShoppingBagIcon />
                                             </div>
                                             <Typography gutterBottom variant="h5" component="div" sx={{ color: "#ffffff" }}>
-                                                $900.00
+                                                $<CountUp delay={0.2} end={900} duration={0.3} />
                                             </Typography>
                                             <Typography gutterBottom variant="body" component="div" sx={{ color: "#ccd1d1" }}>
                                                 Total Orders
