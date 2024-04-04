@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidenav from '../components/Sidenav';
 import Navbar from '../components/Navbar';
+import { Box } from '@mui/material';
 
 export default function Analytics() {
     return (
