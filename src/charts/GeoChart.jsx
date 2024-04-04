@@ -11,7 +11,7 @@ export const data = [
     ["RU", 700],
 ];
 
-export function GeoChart() {
+export default function GeoChart() {
     return (
         <Chart
             chartEvents={[
