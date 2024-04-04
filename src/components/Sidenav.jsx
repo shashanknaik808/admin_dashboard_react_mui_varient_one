@@ -18,6 +18,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../appStore';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 const drawerWidth = 240;
 const openedMixin = (theme) => ({
     width: drawerWidth,
@@ -115,7 +117,7 @@ export default function Sidenav() {
                                     justifyContent: 'center',
                                 }}
                             >
-                                <GroupIcon />
+                                <ShoppingCartIcon />
                             </ListItemIcon>
                             <ListItemText primary="Products" sx={{ opacity: open ? 1 : 0 }} />
                         </ListItemButton>
