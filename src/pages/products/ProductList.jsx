@@ -46,7 +46,7 @@ const style = {
 export default function ProductList() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    // const [rows, setRows] = useState([]);
+    const [rowsState, setRowsState] = useState([]); // Changed variable name to avoid conflicts
     const empCollectionRef = collection(db, "products");
     const [open, setOpen] = useState(false);
     const [editopen, setEditOpen] = useState(false);
@@ -55,8 +55,8 @@ export default function ProductList() {
     const handleClose = () => setOpen(false);
     const handleEditOpen = () => setEditOpen(true);
     const handleEditClose = () => setEditOpen(false);
-    const setRows = useAppStore((state) => state.setRows)
-    const rows = useAppStore((state) => state.rows)
+    const setRows = useAppStore((state) => state.setRows);
+    const rows = useAppStore((state) => state.rows);
 
     useEffect(() => {
         getUsers();
@@ -64,7 +64,7 @@ export default function ProductList() {
 
     const getUsers = async () => {
         const data = await getDocs(empCollectionRef);
-        setRows(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setRowsState(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
 
     const handleChangePage = (event, newPage) => {
@@ -101,9 +101,9 @@ export default function ProductList() {
 
     const filterData = (v) => {
         if (v) {
-            setRows([v]);
+            setRowsState([v]);
         } else {
-            setRows([]);
+            setRowsState([]);
             getUsers();
         }
     };
@@ -124,7 +124,6 @@ export default function ProductList() {
             <div>
                 <Modal
                     open={open}
-                    /* onClose={handleClose}*/
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
@@ -134,7 +133,6 @@ export default function ProductList() {
                 </Modal>
                 <Modal
                     open={editopen}
-                    /* onClose={handleClose}*/
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                 >
@@ -158,7 +156,7 @@ export default function ProductList() {
                     <Autocomplete
                         disablePortal
                         id="combo-box-demo"
-                        options={rows}
+                        options={rowsState}
                         sx={{ width: 300 }}
                         onChange={(e, v) => filterData(v)}
                         getOptionLabel={(rows) => rows.name || ""}
@@ -213,56 +211,54 @@ export default function ProductList() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {rows
+                            {rowsState
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row) => {
-                                    return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} >
-                                            <TableCell key={row.id} align={"left"}>
-                                                {row.name}
-                                            </TableCell>
-                                            <TableCell key={row.id} align={"left"}>
-                                                {row.price}
-                                            </TableCell>
-                                            <TableCell key={row.id} align={"left"}>
-                                                {row.category}
-                                            </TableCell>
-                                            <TableCell key={row.id} align={"left"}>
-                                                {row.date}
-                                            </TableCell>
-                                            <TableCell align="left">
-                                                <Stack spacing={2} direction="row">
-                                                    <EditIcon
-                                                        style={{
-                                                            fontSize: "20px",
-                                                            color: "blue",
-                                                            cursor: "pointer",
-                                                        }}
-                                                        className="cursor-pointer"
-                                                        onClick={() => editData(row.id, row.name, row.price, row.category)}
-                                                    />
-                                                    <DeleteIcon
-                                                        style={{
-                                                            fontSize: "20px",
-                                                            color: "darkred",
-                                                            cursor: "pointer",
-                                                        }}
-                                                        onClick={() => {
-                                                            deleteUser(row.id);
-                                                        }}
-                                                    />
-                                                </Stack>
-                                            </TableCell>
-                                        </TableRow>
-                                    );
-                                })}
+                                .map((row) => (
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                        <TableCell align={"left"}>
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell align={"left"}>
+                                            {row.price}
+                                        </TableCell>
+                                        <TableCell align={"left"}>
+                                            {row.category}
+                                        </TableCell>
+                                        <TableCell align={"left"}>
+                                            {row.date}
+                                        </TableCell>
+                                        <TableCell align="left">
+                                            <Stack spacing={2} direction="row">
+                                                <EditIcon
+                                                    style={{
+                                                        fontSize: "20px",
+                                                        color: "blue",
+                                                        cursor: "pointer",
+                                                    }}
+                                                    className="cursor-pointer"
+                                                    onClick={() => editData(row.id, row.name, row.price, row.category)}
+                                                />
+                                                <DeleteIcon
+                                                    style={{
+                                                        fontSize: "20px",
+                                                        color: "darkred",
+                                                        cursor: "pointer",
+                                                    }}
+                                                    onClick={() => {
+                                                        deleteUser(row.id);
+                                                    }}
+                                                />
+                                            </Stack>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 25, 100]}
                     component="div"
-                    count={rows.length}
+                    count={rowsState.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
